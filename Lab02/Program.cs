@@ -302,7 +302,6 @@ class Program
         Console.WriteLine("| Вхiд | Завдання | Очiкувано | Отримано |");
         Console.WriteLine("|---|---|---|---|");
 
-        // ---- порожній масив ----
         Stats sEmpty = ComputeStats(empty);
         Console.WriteLine("| порожнiй масив | 1 | результат не визначений | " +
             (sEmpty.IsDefined ? "визначений (ПОМИЛКА)" : "\"результат не визначений\"") + " |");
@@ -318,7 +317,6 @@ class Program
         MoveNonPositiveToFront(moveEmpty);
         Console.WriteLine("| порожнiй масив | 4 | масив без змiн (порожнiй) | довжина " + moveEmpty.Length + ", без виняткiв |");
 
-        // ---- один елемент ----
         Stats sSingle = ComputeStats(single);
         Console.WriteLine("| один елемент {0} | 1 | сума=0, середнє=0, min=max=0 (індекс 0), нулiв=1 | сума=" +
             sSingle.Sum + ", середнє=" + sSingle.Avg.ToString("F2") + ", min=" + sSingle.Min + " (idx " + sSingle.MinIndex +
@@ -335,7 +333,6 @@ class Program
         MoveNonPositiveToFront(moveSingle);
         Console.WriteLine("| один елемент {0} | 4 | [0] (без змiн, вже на початку) | [" + moveSingle[0] + "] |");
 
-        // ---- усі елементи однакові ----
         Stats sSame = ComputeStats(same);
         Console.WriteLine("| усi однакові (2,2,2,2,2) | 1 | сума=10, середнє=2.00, min=max=2 (idx 0), нулiв=0 | сума=" +
             sSame.Sum + ", середнє=" + sSame.Avg.ToString("F2") + ", min=" + sSame.Min + " (idx " + sSame.MinIndex +
@@ -360,37 +357,31 @@ class Program
         Console.WriteLine("N = " + N + ", K = " + K + ", a = " + a + ", b = " + b + ", c = " + c);
         Console.WriteLine();
 
-        // ---- основний масив ----
         int[] arr = GenerateArray(24, N, 1, 4);
         PrintArray(arr, "Масив");
         Console.WriteLine();
 
-        // ---- завдання 1 ----
         Console.WriteLine("Завдання 1: характеристики масиву");
         Stats stats = ComputeStats(arr);
         PrintStats(stats);
         Console.WriteLine();
 
-        // ---- завдання 2 ----
         Console.WriteLine("Завдання 2: вiдбiр за критерiєм (елементи > 2)");
         int[] filtered = FilterByCriterion(arr);
         PrintArray(filtered, "Вiдiбранi");
         Console.WriteLine();
 
-        // ---- завдання 3 ----
         Console.WriteLine("Завдання 3: найдовша серiя однакових елементiв");
         RunResult run = LongestRun(arr);
         PrintRun(run);
         Console.WriteLine();
 
-        // ---- завдання 4 ----
         Console.WriteLine("Завдання 4: перестановка на мiсцi (вiд'ємнi/нульовi -> початок)");
         PrintArray(arr, "До");
         MoveNonPositiveToFront(arr);
         PrintArray(arr, "Пiсля");
         Console.WriteLine();
 
-        // ---- завдання 5 ----
         Console.WriteLine("Завдання 5: матриця 3 x 6");
         int[,] matrix = CreateMatrix(3, 6, N);
         PrintMatrix(matrix);
@@ -415,7 +406,6 @@ class Program
 
         Console.WriteLine("Рядок з найбiльшою сумою: " + bestRow + " (сума = " + rowSums[bestRow] + ")");
 
-        // ---- завдання 6 ----
         RunEdgeCaseTests();
     }
 }
